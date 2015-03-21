@@ -38,7 +38,7 @@ Response:
 }
 ```
 
-#### POST /api/user/:userId/preferences
+#### POST /api/user/:userId/settings
 
 Request:
 

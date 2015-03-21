@@ -27,7 +27,10 @@ app.use(parser());
  */
 
 var routes = require('./lib/routes.js');
-app.use(route.get('/', routes.index));
+app.use(route.post('/api/user/register', routes.register));
+app.use(route.post('/api/user/:userId/date', routes.date));
+app.use(route.post('/api/user/:userId/like', routes.like));
+app.use(route.post('/api/user/:userId/settings', routes.settings));
 
 /**
  * Sockets.
