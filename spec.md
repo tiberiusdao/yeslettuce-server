@@ -27,6 +27,8 @@ Request:
   dateOfBirth: '1988-02-24', // or whatever the format is
   createdAt: '2015-03-20',
   gender: '1'
+  // uber oauth token(s)
+  // facebook oauth token(s)
 }
 ```
 
