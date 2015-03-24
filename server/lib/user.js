@@ -12,3 +12,9 @@ var User = wrap(db.get('user'));
  */
 
 module.exports = User;
+
+// need to add logic about filters.
+// User.filter
+
+
+

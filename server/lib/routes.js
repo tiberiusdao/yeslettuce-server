@@ -26,6 +26,7 @@ exports.register = function *() {
 
 exports.settings = function *(userId) {
   var load = this.request.body;
+  // save to mongo.
   return this.body = '';
 };
 
