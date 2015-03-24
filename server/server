@@ -23,6 +23,14 @@ exports = app = koa();
 app.use(parser());
 
 /**
+ * Sockets.
+ */
+
+var sockets = require('./lib/sockets.js');
+socket.start(app);
+socket.on('connection', sockets.connection);
+
+/**
  * Configure routes.
  */
 
@@ -31,15 +39,6 @@ app.use(route.post('/api/user/register', routes.register));
 app.use(route.post('/api/user/:userId/date', routes.date));
 app.use(route.post('/api/user/:userId/like', routes.like));
 app.use(route.post('/api/user/:userId/settings', routes.settings));
-
-/**
- * Sockets.
- */
-
-// socket.start(app);
-// socket.on('join', function(data) {
-//   console.log('join event fired', data);
-// });
 
 /**
  * Listen on PORT.

@@ -81,41 +81,17 @@ Response:
 
 ```javascript
 {
-  recommendations: [
-    {
-      id: '123123123123',
-      firstName: 'Tracy',
-      bio: 'i like turtles',
-      distance: '2 miles'
-      photos: [
-        'photo.png',
-        'photo2.png'
-      ]
-    }
-  ]
+  room: 'socket-room-name'
 }
 ```
 
-#### POST /api/user/:userId/like
+Client will then join the socket room name.
 
-Request:
+#### Socket.IO
 
-```javascript
-{
-  id: '123123123123', // of the other person
-  like: true          // or false
-}
-```
+To send matches
 
-Response:
-
-```javascript
-{
-  match: false        // or true
-}
-```
-
-If response is `match: true`, then show user a match screen with uber details.
+To send uber details
 
 ### Outward facing APIs
 
