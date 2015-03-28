@@ -6,29 +6,35 @@
 
 var parser = require('koa-bodyparser');
 var PORT = process.env.PORT || 3000;
+var logger = require('koa-logger');
 var socket = require('koa-socket');
+var serve = require('koa-static');
 var route = require('koa-route');
 var koa = require('koa');
 
 /**
- * Expose `app`.
+ * Define `app`.
  */
 
-exports = app = koa();
+var app = koa();
+
+/**
+ * Use logger.
+ */
+
+app.use(logger());
+
+/**
+ * Setup static directory.
+ */
+
+app.use(serve('public'));
 
 /**
  * Use body parser.
  */
 
 app.use(parser());
-
-/**
- * Sockets.
- */
-
-var sockets = require('./lib/sockets.js');
-socket.start(app);
-socket.on('connection', sockets.connection);
 
 /**
  * Configure routes.
@@ -41,8 +47,27 @@ app.use(route.post('/api/user/:userId/like', routes.like));
 app.use(route.post('/api/user/:userId/settings', routes.settings));
 
 /**
- * Listen on PORT.
+ * Sockets.
  */
 
-app.listen(PORT);
-console.log('listening on port ' + PORT);
+var sockets = require('./lib/sockets.js');
+socket.start(app);
+socket.on('connection', sockets.connection);
+socket.on('event', function(packet) {
+  console.log('Socket received packet\n', packet);
+});
+socket.on('message', function(packet) {
+  app.io.emit('message', packet);
+});
+
+// Add a custom connected handler
+// socket.on( 'connection', function( socket ) {
+//     socket.emit( 'connected', {} );
+// });
+
+
+/**
+ * Export server.
+ */
+
+module.exports = app.server;
