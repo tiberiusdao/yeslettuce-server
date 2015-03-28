@@ -3,7 +3,17 @@
  * Module dependencies.
  */
 
+var render = require('./render');
 var User = require('./user');
+
+/**
+ * Serve static page for testing.
+ */
+
+exports.index = function *() {
+  // this.body = yield render('index');
+  this.body = '';
+};
 
 /**
  * Register user.
