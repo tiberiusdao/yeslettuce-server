@@ -10,7 +10,10 @@ var User = require('./user');
  * On match, emit event.
  */
 
-exports.connection = function *(packet) {
+exports.connection = function(socket) {
+
+  socket.emit('connected', {});
+
   // join a room based on client preference.
   // - ice cream, beer, or coffee.
   // - age limitations
