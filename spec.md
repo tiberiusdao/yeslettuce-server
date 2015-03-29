@@ -1,6 +1,8 @@
-## Spec and Documentation
 
-> Technical spec and documentation for the server.
+## Server spec
+
+Relevant links:
+- [client spec](https://github.com/tiberiusdao/yeslettuce-client/blob/master/spec.md)
 
 ### User stories
 
@@ -12,7 +14,7 @@
 - call an Uber
 - get laid
 
-### Client facing API endpoints
+### Client-facing API endpoints
 
 Content-type: application/json
 
@@ -26,9 +28,12 @@ Request:
   lastName: 'Jiang',
   dateOfBirth: '1988-02-24', // or whatever the format is
   createdAt: '2015-03-20',
-  gender: '1'
-  // uber oauth token(s)
-  // facebook oauth token(s)
+  gender: '1',
+  uberAccessToken: '123',
+  uberRefreshToken: 'abc',
+  fbAccessToken: '123',
+  fbRefreshToken: 'abc',
+  fbId: '123123'
 }
 ```
 
