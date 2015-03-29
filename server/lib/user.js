@@ -4,6 +4,7 @@
  */
 
 var db = require('./db');
+var merge = require('merge');
 var wrap = require('co-monk');
 var User = wrap(db.get('user'));
 
@@ -13,8 +14,22 @@ var User = wrap(db.get('user'));
 
 module.exports = User;
 
-// need to add logic about filters.
-// User.filter
+/**
+ * Upsert user.
+ */
 
+User.upsert = function *(user) {
+  var exists = yield this.findOne({ fbId: user.fbId });
+  if (!exists) return yield this.insert(user);
+  return yield this.updateById(exists._id, user);
+}
 
+/**
+ * Settings.
+ */
 
+User.settings = function *(fbId, settings) {
+  var user = yield this.findOne({ fbId: fbId });
+  user = merge(user, settings);
+  return yield this.updateById(user._id, user);
+};
