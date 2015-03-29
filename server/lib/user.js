@@ -25,11 +25,11 @@ User.upsert = function *(user) {
 }
 
 /**
- * Settings.
+ * Update user.
  */
 
-User.settings = function *(fbId, settings) {
+User.update = function *(fbId, props) {
   var user = yield this.findOne({ fbId: fbId });
-  user = merge(user, settings);
-  return yield this.updateById(user._id, user);
+  var mergedUser = merge(user, props);
+  return yield this.updateById(user._id, mergedUser);
 };
