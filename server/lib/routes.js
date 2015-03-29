@@ -18,14 +18,16 @@ exports.register = function *() {
 };
 
 /**
- * Set user settings.
+ * Update user by `fbId`.
+ *
+ * Settings, preferences, photos, bio, etc.
  *
  * Return object success.
  */
 
-exports.settings = function *(fbId) {
+exports.update = function *(fbId) {
   var load = this.request.body;
-  return this.body = yield User.settings(fbId, load.settings);
+  return this.body = yield User.update(fbId, load.settings);
 };
 
 /**
