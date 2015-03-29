@@ -22,6 +22,7 @@
     "koa-route": "^2.2.0",
     "koa-socket": "^0.3.0",
     "koa-static": "^1.4.9",
+    "merge": "^1.2.0",
     "mongodb": "^1.4.4",
     "monk": "^1.0.0",
     "superagent": "^1.1.0",
