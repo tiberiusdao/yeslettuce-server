@@ -11,7 +11,6 @@ var User = require('./user');
  */
 
 exports.connection = function(socket) {
-
   socket.emit('connected', {});
 
   // join a room based on client preference.
