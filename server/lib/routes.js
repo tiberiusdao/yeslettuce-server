@@ -7,15 +7,6 @@ var render = require('./render');
 var User = require('./user');
 
 /**
- * Serve static page for testing.
- */
-
-exports.index = function *() {
-  // this.body = yield render('index');
-  this.body = '';
-};
-
-/**
  * Register user.
  *
  * Return object success.
@@ -23,9 +14,7 @@ exports.index = function *() {
 
 exports.register = function *() {
   var load = this.request.body;
-  // upsert user.
-  // should also ask user to auth with uber.
-  return this.body = '';
+  return this.body = yield User.upsert(load.user);
 };
 
 /**
@@ -34,10 +23,9 @@ exports.register = function *() {
  * Return object success.
  */
 
-exports.settings = function *(userId) {
+exports.settings = function *(fbId) {
   var load = this.request.body;
-  // save to mongo.
-  return this.body = '';
+  return this.body = yield User.settings(fbId, load.settings);
 };
 
 /**
@@ -46,11 +34,8 @@ exports.settings = function *(userId) {
  * Returns socket room name.
  */
 
-exports.date = function *(userId) {
+exports.date = function *(fbId) {
   var load = this.request.body;
-  // return people who signed in last 5min filtered by pref?
-  // redis? mongo?
-  // on client side, need to add user to socket room.
-  // return this.body = socket room name
+  // return the name of socket io to join
   return this.body = '';
 };
