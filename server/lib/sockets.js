@@ -30,3 +30,27 @@ exports.connection = function(socket) {
   // - if match, then do stuff! call uber.
   // - if no match, ignore
 };
+
+
+/**
+ * When a user connects, the user should receive a stack of cards that
+ * matches her criteria.
+ *
+ * @card:
+ * - name
+ * - distance
+ * - bio
+ * - photos [..]
+ * - availableUntil (date)
+ */
+
+/**
+ * When a user swipes right or swipes left, the server should receive
+ * that information and broadcast is to the other person.
+ *
+ * Receive:
+ * - fbId
+ * - like: `true` (or `false`)
+ *
+ * Emit:
+ */
