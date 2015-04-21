@@ -1,0 +1,21 @@
+#!/usr/bin/env node
+
+/**
+ * Module dependencies.
+ */
+
+var app = require('../server');
+var PORT = process.env.PORT || 3000;
+
+/**
+ * Create a server that mounts the `app`.
+ */
+
+var server = module.exports = app({});
+
+/**
+ * Listen.
+ */
+
+server.listen(PORT);
+console.log('listening on port ' + PORT);
