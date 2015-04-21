@@ -21,15 +21,15 @@ clean:
 
 # Run the server in debug mode.
 debug: node_modules
-	@node debug --harmony index.js --development
+	@node debug --harmony bin/server --development
 
 # Run the server.
 run: node_modules
-	@node --harmony index.js
+	@node --harmony bin/server
 
 # Run the server with nodemon for development.
 server: node_modules
-	@$(nodemon) --watch server index.js --development
+	@$(nodemon) --watch server bin/server --development
 
 #
 # Targets.
